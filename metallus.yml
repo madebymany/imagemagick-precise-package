@@ -10,6 +10,9 @@ jobs:
     promote_through:
       - precise-unstable
       - precise-stable
+
+    build_depends:
+      - "apt-transport-https"
     packages:
       - type: debian
         name: imagemagick
