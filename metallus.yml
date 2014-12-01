@@ -1,14 +1,19 @@
-software_groups: &software
-  - "base"
+packages:
+  branch_codenames:
+    master: precise-unstable
+    production: precise-stable
+
 jobs:
   imagemagick:
     builder: make
-    base: "ubuntu:12.04"
-    software_groups: *software
+    base: "quay.io/madebymany/build-bases:precise"
+    promote_through:
+      - precise-unstable
+      - precise-stable
     packages:
       - type: debian
         name: imagemagick
-        version: "8:6.8.9-2"
+        version: "8:6.8.9-3"
         depends: 
           - libc6
           - libbz2-1.0
@@ -31,4 +36,4 @@ jobs:
           - libdjvulibre21
         target: install
         repos:
-          - mxm
+          - mxm-public
